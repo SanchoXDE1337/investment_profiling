@@ -1,0 +1,603 @@
+@font-face {
+    font-family: Muller;
+    src: url("fonts/MullerRegular.woff2") format("woff2"), url("fonts/MullerRegular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Muller;
+    src: url("fonts/MullerMedium.woff2") format("woff2"), url("fonts/MullerMedium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Muller", sans-serif;
+    color: #282423;
+    background: #fff;
+}
+
+.sm_text {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+}
+
+.md_text {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+}
+
+.lg_text {
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.02em;
+}
+
+.xl_text {
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: 0.02em;
+}
+
+.text_bold {
+    font-weight: 500;
+}
+
+.text_bronze {
+    color: #8C6A52;
+}
+
+.button {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    border: 2px solid #8C6A52;
+    border-radius: 27px;
+    padding: 15px 34px;
+    background: #fff;
+    transition: background-color .2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.button:hover {
+    background: #8C6A52;
+    color: #FFF;
+}
+
+a {
+    text-decoration: none;
+    color: #282423;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 12px 70px 8px 64px;
+    height: 118px;
+}
+
+.logo__link {
+    transform: scale(1);
+    transition: transform .1s ease-in;
+}
+
+.logo__link:active {
+    transform: scale(.95);
+}
+
+.main-logo {
+    width: 318px;
+    height: 46px;
+}
+
+.header__info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    font-size: 12px;
+    line-height: 21px;
+    height: 100%;
+}
+
+.header__info > a {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+}
+
+.header__info svg {
+    margin-right: 4px;
+}
+
+.dropdown-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.dropdown-container:after {
+    content: "";
+    width: 8px;
+    height: 4px;
+    background: url("img/select-arrow.svg") 0 0 / contain no-repeat;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: -16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 0;
+    width: 200px;
+    background: #fff;
+    padding: 0 16px;
+    transition: height .35s ease-in-out;
+}
+
+.dropdown-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 15px;
+    align-items: flex-end;
+}
+
+.dropdown-item:first-child {
+    padding-top: 20px;
+}
+
+.dropdown-item:last-child {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+}
+
+.dropdown-item span {
+    color: #807d7d;
+}
+
+.dropdown.active {
+    height: 146px;
+    box-shadow: 0 2px 6px rgb(40 36 35 / 10%);
+}
+
+
+.content {
+    padding: 0 64px 160px;
+}
+
+.content__header {
+    margin-left: 128px;
+}
+
+.main-title {
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: 0.01em;
+    margin: 100px 0 30px 0;
+    font-weight: 400;
+}
+
+.content__header .sm_text {
+    max-width: 848px;
+}
+
+.divider-bar {
+    height: 10px;
+    width: 100%;
+    margin: 50px 0 80px;
+    background: #5A085A;
+}
+
+.steps__container {
+    margin-left: 128px;
+}
+
+.steps__container.steps__container_invisible {
+    display: none;
+}
+
+.content__step {
+    display: none;
+    transform-origin: left;
+    animation: animate 0.2s;
+}
+
+.content__step.active_step {
+    display: block;
+}
+
+.start_step .sm_text {
+    margin: 40px 0;
+    max-width: 848px;
+}
+
+
+.content__page {
+    max-width: 635px;
+}
+
+@keyframes animate {
+    from {
+        transform: scale(0, 1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.progress {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.progress_visible {
+    display: flex;
+}
+
+.progress-counter {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #807D7D;
+    margin-bottom: 4px;
+}
+
+.progress-bar {
+    position: relative;
+    height: 4px;
+    width: 100%;
+    background: #F2F2F2;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #8C6A52;
+    width: calc(1/9*100%);
+    transition: width 0.3s ease-in-out;
+}
+
+
+.radio-group {
+    margin: 20px 0 40px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-mark {
+    position: absolute;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #FFF;
+    border: 1px solid #8C6A52;
+    border-radius: 50%;
+}
+
+.radio-item:hover input ~ .radio-mark {
+    background-color: #FAF6F4;
+}
+
+.radio-item input:checked ~ .radio-mark {
+    background-color: #FFF;
+}
+
+.radio-mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-item input:checked ~ .radio-mark:after {
+    display: block;
+}
+
+.radio-item .radio-mark:after {
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #5A085A;;
+}
+
+
+
+
+.button-container {
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.button-container_visible {
+    display: flex;
+}
+
+.button_transparent {
+    padding: unset;
+    border: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #807D7D;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+}
+
+.back__button {
+    display: none;
+    margin-right: 120px;
+}
+
+.back__button_visible {
+    display: block;
+}
+
+.button_transparent:hover {
+    background: none;
+    color: #000;
+}
+
+
+.slider__container {
+    width: 288px;
+}
+
+.slider__label {
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    text-transform: uppercase;
+    margin: 20px 0 8px;
+}
+
+.slider__ranges {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0 20px;
+    line-height: 9px;
+    font-size: 9px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: #8C6A52;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #FFF;
+    border: 2px solid #8C6A52;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #FFF;
+    border: 2px solid #8C6A52;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.avg-loss {
+    color: #8C6A52;
+    margin-bottom: 40px;
+}
+
+.content__prompt {
+    display: none;
+    padding: 40px;
+    max-width: 848px;
+    background: #FAF6F4;
+    margin-bottom: 40px;
+}
+
+.content__prompt > :first-child {
+    margin-bottom: 20px;
+}
+
+.content__prompt_visible {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.link__button {
+    margin-top: 40px;
+    color: #8C6A52;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.button__right-arrow {
+    margin-left: 14px;
+    width: 20px;
+    height: 24px;
+    transform: rotate(90deg);
+}
+
+
+.results {
+    margin-left: 128px;
+    display: none;
+}
+
+.results_visible {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.result {
+    display: none;
+    max-width: 848px;
+    padding: 40px;
+    margin-top: 40px;
+    margin-bottom: 54px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: #FAF6F4;
+}
+
+.result_visible {
+    display: flex;
+}
+
+.result__description {
+    margin: 20px 0;
+}
+
+.result__var {
+    color: #8C6A52;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.pie-chart__container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+
+.pie-chart {
+    width: 267px;
+    height: 267px;
+    margin-right: 36px;
+}
+
+.pie-chart__description {
+    display: flex;
+    flex-direction: column;
+}
+
+.pie-chart__description span {
+    color: #8C6A52;
+    line-height: 32px;
+    font-weight: 700;
+}
+
+.result__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.result__link .link__button {
+    margin-top: 0;
+    margin-left: 36px;
+    flex-shrink: 0;
+}
+
+
+
+
+
+.footer {
+    background-color: #5A085A;
+    color: #FAF6F4;
+    padding: 24px 64px 32px 192px;
+    position: relative;
+}
+
+.footer__bottom-arrow {
+    position: absolute;
+    left: 64px;
+    top: 28px;
+    cursor: pointer;
+}
+
+.footer__bottom-arrow > path {
+    transition: fill .3s cubic-bezier(.25,.46,.45,.94);
+}
+
+.footer__bottom-arrow:hover > path {
+    fill: #8b95a4;
+}
+
+.footer__copyright-text {
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    opacity: 0.5;
+    margin-bottom: 12px;
+}
+
+.footer__copyright {
+    font-size: 10px;
+    line-height: 21px;
+    letter-spacing: 0.02em;
+}
