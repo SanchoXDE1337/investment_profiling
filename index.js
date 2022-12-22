@@ -8,6 +8,7 @@ const profitSliderValue = document.querySelector('#profit_value')
 const profitAvgLossValue = document.querySelector('.avg-loss')
 const yearSliderValue = document.querySelector('#year_value')
 const amountSliderValue = document.querySelector('#invest_amount_value')
+const continueButton = document.querySelector('#btn_continue')
 const backButton = document.querySelector('#btn_back')
 const resetButton = document.querySelector('#btn_reset')
 const resultContainer = document.querySelector('.results')
@@ -47,8 +48,24 @@ function startProfiling() {
     });
 }
 
-document.querySelector('#btn_continue').addEventListener('click', () => {
-    currentStep++;
+function isAnyChecked(currStep) {
+    return !!profSteps[currStep].querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').length
+}
+
+document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach((input) => {
+    input.addEventListener('change', () => {
+        if (isAnyChecked(currentStep)) {
+            continueButton.disabled = false;
+        }
+    })
+})
+
+continueButton.addEventListener('click', () => {
+    if (isAnyChecked(currentStep) || currentStep === 7 || currentStep === 9) {
+        currentStep++;
+    } else {
+        return;
+    }
     dividerBar.scrollIntoView({behavior: "smooth", block: "start", inline: "start"})
     let profitSliderAnswer1
     if (+profitSlider.value === 0) {
@@ -91,7 +108,7 @@ document.querySelector('#btn_continue').addEventListener('click', () => {
         }
 
         const allAnswerSum = radioAnswersSum + checkboxAnswersSum + profitSliderAnswer
-        console.log(allAnswerSum)
+        console.log('RESULT:', allAnswerSum)
 
         let resultPageIndex
         if (allAnswerSum <= 30) {
@@ -116,6 +133,14 @@ document.querySelector('#btn_continue').addEventListener('click', () => {
             backButton.classList.add('back__button_visible')
         }
 
+        if (!(currentStep === 7 || currentStep === 9)) {
+            continueButton.disabled = true;
+        }
+
+        if (isAnyChecked(currentStep)) {
+            continueButton.disabled = false;
+        }
+
         profSteps.forEach((profStep) => {
             profStep.classList.contains('active_step') && profStep.classList.remove('active_step');
             profSteps[currentStep].classList.add('active_step')
@@ -127,6 +152,7 @@ backButton.addEventListener('click', () => {
     currentStep--;
     progressBar.style.width = 100 / 9 * currentStep + '%';
     stepCounter.innerHTML = `${currentStep}`;
+    continueButton.disabled = false;
 
     if (currentStep < 2) {
         backButton.classList.remove('back__button_visible')
@@ -207,6 +233,7 @@ document.querySelectorAll('input[name="unsuitable"]').forEach((input) => input.a
 
 
 resetButton.addEventListener('click', () => {
+    dividerBar.scrollIntoView({behavior: "smooth", block: "start", inline: "start"})
     currentStep = 1;
     profSteps[currentStep].classList.add('active_step')
     progressBar.style.width = 100 / 9 * currentStep + '%';
