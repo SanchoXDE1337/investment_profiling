@@ -160,10 +160,83 @@ a {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-end;
     padding: 12px 70px 8px 64px;
-    height: 118px;
+}
+
+.logo__container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+}
+
+.button_dropdown {
+    height: 36px;
+    position: relative;
+    padding: 12px 26px 12px 16px;
+    background: #8C6A52;
+    border-radius: 24px;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+}
+
+.dropdown__span {
+    display: block;
+    position: relative;
+    font-size: 11px;
+    line-height: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #FFF;
+    text-transform: uppercase;
+    transition: transform .1s ease-in;
+}
+
+.dropdown__arrow {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    background: url("img/select-arrow-white.svg") 0 0 / contain no-repeat;
+    display: block;
+    top: 4px;
+    right: -12px;
+    fill: #FFF;
+}
+
+.button_dropdown:active > .dropdown__span {
+    transform: translateY(1px);
+}
+
+.dropdown__menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    top: 41px;
+    transition: height .35s ease-in-out, opacity .35s ease-in-out;
+    z-index: 2;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.dropdown__link {
+    padding-right: 16px;
+}
+
+.dropdown__link:first-child {
+    margin-bottom: 5px;
+}
+
+.dropdown__menu_visible {
+    height: 146px;
+    opacity: 1;
 }
 
 .logo__link {
@@ -230,6 +303,7 @@ a {
     background: #fff;
     padding: 0 16px;
     transition: height .35s ease-in-out;
+    z-index: 3;
 }
 
 .dropdown-item {
@@ -299,8 +373,6 @@ a {
 
 .content__step {
     display: none;
-    transform-origin: left;
-    animation: animate 0.3s;
 }
 
 .content__step.active_step {
@@ -308,8 +380,15 @@ a {
 }
 
 .start_step .sm_text {
-    margin: 40px 0;
     max-width: 848px;
+}
+
+.start_step .xl_text {
+    margin-bottom: 40px;
+}
+
+.start_step .button {
+    margin-top: 40px;
 }
 
 
@@ -317,15 +396,8 @@ a {
     max-width: 635px;
 }
 
-@keyframes animate {
-    from {
-        transform: scale(0, 1);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1, 1);
-        opacity: 1;
-    }
+.content__page > .lg_text {
+    font-weight: 500;
 }
 
 .progress {
@@ -470,12 +542,26 @@ a {
     width: 288px;
 }
 
+.slider__container_margin {
+    margin-bottom: 40px;
+}
+
 .slider__label {
     font-weight: 500;
     font-size: 9px;
     line-height: 9px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     margin: 20px 0 8px;
+}
+
+.slider__value {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.02em;
+    color: #282423;
+    margin-bottom: 8px;
 }
 
 .slider__ranges {
@@ -485,6 +571,9 @@ a {
     margin: 16px 0 20px;
     line-height: 9px;
     font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .slider {
@@ -519,7 +608,7 @@ a {
 
 .avg-loss {
     color: #8C6A52;
-    margin-bottom: 40px;
+    margin: 0 0 40px;
 }
 
 .content__prompt {
@@ -552,11 +641,38 @@ a {
     justify-content: flex-start;
 }
 
+.arrow__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .button__right-arrow {
     margin-left: 14px;
     width: 20px;
     height: 24px;
     transform: rotate(90deg);
+    transition: transform .2s ease-out;
+}
+
+.arrow__line {
+    background-color: #8C6A52;
+    display: block;
+    height: 2px;
+    width: 22px;
+    left: 12px;
+    position: absolute;
+    transition: width .2s ease-out;
+    pointer-events: none;
+}
+
+.link__button:hover .button__right-arrow {
+    transform: rotate(90deg) translateY(-31px);
+}
+
+.link__button:hover .arrow__line {
+    width: 33px;
 }
 
 
@@ -598,13 +714,6 @@ a {
     margin: 20px 0;
 }
 
-.result__var {
-    color: #8C6A52;
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 20px;
-}
-
 .pie-chart__container {
     display: flex;
     align-items: center;
@@ -623,10 +732,11 @@ a {
     flex-direction: column;
 }
 
-.pie-chart__description span {
+.pie-chart__description .text_bold {
     color: #8C6A52;
     line-height: 32px;
     font-weight: 700;
+    margin-right: 6px;
 }
 
 .result__link {
@@ -690,8 +800,12 @@ a {
     }
 
     .header {
-        padding: 40px 16px 0;
+        padding: 14px 16px 0;
         height: auto;
+    }
+
+    .logo__container {
+        margin-top: 20px;
     }
 
     .main-logo {
@@ -704,13 +818,12 @@ a {
         line-height: 32px;
     }
 
-    .header__info {
-        display: none;
+    .start_step .sm_text {
+        max-width: unset;
     }
 
-    .start_step .sm_text {
-        margin: 22px 0 40px;
-        max-width: unset;
+    .start_step .xl_text {
+        margin-bottom: 22px;
     }
 
     .content__header, .steps__container, .results {
@@ -744,17 +857,33 @@ a {
     .result {
         margin-top: 22px;
         margin-bottom: 40px;
-        padding: 30px 15px;
+        padding: 30px 35px 30px 20px;
     }
 
     .result__description {
-        margin: 20px 0 10px;
+        margin: 20px 0;
     }
 
     .pie-chart__description > :not(:last-child) {
         margin-bottom: 10px;
     }
 
+    .pie-chart {
+        width: 207px;
+        height: 207px;
+    }
+
+    .footer {
+        padding: 84px 16px 45px;
+    }
+
+    .footer__bottom-arrow {
+        left: 16px;
+        top: 40px;
+    }
+}
+
+@media only screen and (max-width: 598px) {
     .pie-chart__container {
         flex-direction: column;
         align-items: flex-start;
@@ -762,10 +891,12 @@ a {
     }
 
     .pie-chart {
-        width: 207px;
-        height: 207px;
         margin-right: 0;
         margin-bottom: 20px;
+    }
+
+    .result {
+        padding: 30px 15px;
     }
 
     .result__link {
@@ -777,14 +908,17 @@ a {
         margin-left: 0;
         margin-top: 20px;
     }
+}
 
-
-    .footer {
-        padding: 84px 16px 45px;
+@media only screen and (max-width: 450px) {
+    .main-logo {
+        width: auto;
+        height: 25px;
     }
+}
 
-    .footer__bottom-arrow {
-        left: 16px;
-        top: 40px;
+@media only screen and (max-width: 400px) {
+    .main-logo {
+        height: 15px;
     }
 }

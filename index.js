@@ -1,7 +1,14 @@
+const dropdownButton = document.querySelector('#btn_dropdown')
+const dropdownBtnContainer = document.querySelector('.dropdown__menu')
+const dropdownLink = document.querySelector('.dropdown')
+const dropdownLinkContainer = document.querySelector('.dropdown-container')
+const startButton = document.querySelector('#btn_start');
 const profSteps = document.querySelectorAll('.content__step')
 const stepsContainer = document.querySelector('.steps__container')
 const dividerBar = document.querySelector('.divider-bar')
 const progressBar = document.querySelector('.bar')
+const progressContainer = document.querySelector('.progress')
+const buttonContainer = document.querySelector('.button-container')
 const stepCounter = document.querySelector('#progress-counter')
 const profitSlider = document.querySelector('#profitability')
 const profitSliderValue = document.querySelector('#profit_value')
@@ -15,38 +22,36 @@ const resultContainer = document.querySelector('.results')
 const prompt2 = document.getElementById('prompt_2')
 const prompt51 = document.getElementById('prompt_51');
 const prompt52 = document.getElementById('prompt_52');
+const footerArrow = document.querySelector('.footer__bottom-arrow');
 
 
 let currentStep = 0;
 
+dropdownButton.addEventListener('click', () => dropdownBtnContainer.classList.toggle('dropdown__menu_visible'))
 
-function toggleMenu() {
-    const dropdown = document.querySelector('.dropdown')
-    const dropdownContainer = document.querySelector('.dropdown-container')
-    dropdownContainer.addEventListener('click', () => dropdown.classList.toggle('active'))
-}
+dropdownLinkContainer.addEventListener('click', () => dropdownLink.classList.toggle('active'))
 
-function backToTop() {
-    const arrow = document.querySelector('.footer__bottom-arrow');
-    arrow.addEventListener('click', function () {
-        window.scroll({
-            top: 0, left: 0, behavior: 'smooth'
-        });
+footerArrow.addEventListener('click', function () {
+    window.scroll({
+        top: 0, left: 0, behavior: 'smooth'
     });
-}
+});
 
-function startProfiling() {
-    const startButton = document.querySelector('#btn_start');
-    startButton.addEventListener('click', () => {
-        currentStep++;
-        profSteps.forEach((profStep) => {
-            profStep.classList.contains('active_step') && profStep.classList.remove('active_step');
-            profSteps[currentStep].classList.add('active_step')
-        });
-        document.querySelector('.progress').classList.add('progress_visible');
-        document.querySelector('.button-container').classList.add('button-container_visible');
+startButton.addEventListener('click', () => {
+    currentStep++;
+    profSteps.forEach((profStep) => {
+        profStep.classList.contains('active_step') && profStep.classList.remove('active_step');
+        profSteps[currentStep].classList.add('active_step')
     });
-}
+    progressContainer.classList.add('progress_visible');
+    buttonContainer.classList.add('button-container_visible');
+    progressBar.style.width = 100 / 9 * currentStep + '%';
+    stepCounter.innerHTML = `${currentStep}`;
+
+    if (!isAnyChecked(currentStep)) {
+        continueButton.disabled = true;
+    }
+});
 
 function isAnyChecked(currStep) {
     return !!profSteps[currStep].querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked').length
@@ -54,9 +59,7 @@ function isAnyChecked(currStep) {
 
 document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach((input) => {
     input.addEventListener('change', () => {
-        if (isAnyChecked(currentStep)) {
-            continueButton.disabled = false;
-        }
+        continueButton.disabled = !isAnyChecked(currentStep);
     })
 })
 
@@ -66,25 +69,8 @@ continueButton.addEventListener('click', () => {
     } else {
         return;
     }
-    dividerBar.scrollIntoView({behavior: "smooth", block: "start", inline: "start"})
-    let profitSliderAnswer1
-    if (+profitSlider.value === 0) {
-        profitSliderAnswer1 = 6.6
-    } else if (+profitSlider.value < 5) {
-        profitSliderAnswer1 = 13.2
-    } else if (+profitSlider.value >= 5 && +profitSlider.value < 15) {
-        profitSliderAnswer1 = 19.8
-    } else if (+profitSlider.value >= 15 && +profitSlider.value < 30) {
-        profitSliderAnswer1 = 26.4
-    } else if (+profitSlider.value === 30) {
-        profitSliderAnswer1 = 33
-    }
 
-    console.log('-------------------------------------------')
-    console.log('CURR_STEP', currentStep)
-    console.log('RADIO', Array.from(document.querySelectorAll('input[type="radio"]:checked')).map(node => node.value).reduce((acc, value) => acc + +value, 0))
-    console.log('CHECKBOX', Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(node => node.value).reduce((acc, value) => acc + +value, 0))
-    console.log("SLIDER", profitSliderAnswer1)
+    dividerBar.scrollIntoView({behavior: "smooth", block: "start", inline: "start"})
 
     if (currentStep > 9) {
         profSteps.forEach((profStep) => {
@@ -108,7 +94,6 @@ continueButton.addEventListener('click', () => {
         }
 
         const allAnswerSum = radioAnswersSum + checkboxAnswersSum + profitSliderAnswer
-        console.log('RESULT:', allAnswerSum)
 
         let resultPageIndex
         if (allAnswerSum <= 30) {
@@ -128,10 +113,6 @@ continueButton.addEventListener('click', () => {
     } else {
         progressBar.style.width = 100 / 9 * currentStep + '%';
         stepCounter.innerHTML = `${currentStep}`;
-
-        if (currentStep > 1) {
-            backButton.classList.add('back__button_visible')
-        }
 
         if (!(currentStep === 7 || currentStep === 9)) {
             continueButton.disabled = true;
@@ -154,8 +135,9 @@ backButton.addEventListener('click', () => {
     stepCounter.innerHTML = `${currentStep}`;
     continueButton.disabled = false;
 
-    if (currentStep < 2) {
-        backButton.classList.remove('back__button_visible')
+    if (currentStep < 1) {
+        progressContainer.classList.remove('progress_visible');
+        buttonContainer.classList.remove('button-container_visible');
     }
 
     profSteps.forEach((profStep) => {
@@ -177,8 +159,6 @@ profitSlider.oninput = function () {
     } else if (this.value >= 30) {
         profitAvgLossValue.innerText = 'Потери от 30% до 100%';
     }
-
-
 }
 
 document.querySelector('#years').oninput = function () {
@@ -193,7 +173,6 @@ document.querySelector('#years').oninput = function () {
         default:
             yearSliderValue.innerText = `${ticks[+this.value]} лет`;
     }
-
 }
 
 document.querySelector('#invest_amount').oninput = function () {
@@ -205,10 +184,10 @@ document.querySelector('#invest_amount').oninput = function () {
             amountSliderValue.innerText = `${ticks[+this.value]} тыс. ₽`;
             break;
         case 9:
-            amountSliderValue.innerText = `больше ${ticks[+this.value]} млн. ₽`;
+            amountSliderValue.innerText = `больше ${ticks[+this.value]} млн ₽`;
             break;
         default:
-            amountSliderValue.innerText = `${ticks[+this.value]} млн. ₽`;
+            amountSliderValue.innerText = `${ticks[+this.value]} млн ₽`;
     }
 }
 
@@ -234,22 +213,15 @@ document.querySelectorAll('input[name="unsuitable"]').forEach((input) => input.a
 
 resetButton.addEventListener('click', () => {
     dividerBar.scrollIntoView({behavior: "smooth", block: "start", inline: "start"})
-    currentStep = 1;
+    currentStep = 0;
     profSteps[currentStep].classList.add('active_step')
-    progressBar.style.width = 100 / 9 * currentStep + '%';
-    stepCounter.innerHTML = `${currentStep}`;
+    progressBar.style.width = 100 / 9 + '%';
+    stepCounter.innerHTML = '1';
+    progressContainer.classList.remove('progress_visible');
+    buttonContainer.classList.remove('button-container_visible');
     stepsContainer.classList.remove('steps__container_invisible')
     resultContainer.classList.remove('results_visible')
     document.querySelectorAll('.result').forEach((resultPage) => {
         resultPage.classList.contains('result_visible') && resultPage.classList.remove('result_visible');
     })
-
 })
-
-
-window.onload = function () {
-    toggleMenu();
-    backToTop();
-    startProfiling();
-}
-
