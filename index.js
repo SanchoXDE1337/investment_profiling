@@ -157,7 +157,8 @@ profitSlider.oninput = function () {
     } else if (this.value < 30) {
         profitAvgLossValue.innerText = 'Потери от 15% до 30%';
     } else if (this.value >= 30) {
-        profitAvgLossValue.innerText = 'Потери от 30% до 100%';
+        profitAvgLossValue.innerText = 'Потери от 30%';
+        profitSliderValue.innerText = 'от 30%';
     }
 }
 
