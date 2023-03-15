@@ -18,6 +18,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -68,6 +69,10 @@ button {
     line-height: 35px;
     letter-spacing: 0.02em;
     color: #909090;
+}
+
+.mb_20 {
+    margin-bottom: 20px;
 }
 
 .button {
@@ -344,6 +349,7 @@ a {
 
 .content {
     padding: 0 64px 160px;
+    overflow: hidden;
 }
 
 .content__header {
@@ -441,7 +447,7 @@ a {
     bottom: 0;
     left: 0;
     background: #8C6A52;
-    width: calc(1 / 9 * 100%);
+    width: calc(1 / 14 * 100%);
     transition: width 0.3s ease-in-out;
 }
 
@@ -529,6 +535,7 @@ a {
     color: #807D7D;
     letter-spacing: 0.05em;
     font-weight: 400;
+    background: transparent;
 }
 
 .back__button {
@@ -541,7 +548,6 @@ a {
 }
 
 .button_transparent:hover {
-    background: none;
     color: #000;
 }
 
@@ -554,7 +560,7 @@ a {
     margin-bottom: 40px;
 }
 
-.slider__label {
+.slider__label, .input__label {
     font-weight: 500;
     font-size: 9px;
     line-height: 9px;
@@ -591,6 +597,7 @@ a {
     height: 2px;
     background: #8C6A52;
     outline: none;
+    touch-action: none;
 }
 
 .slider::-webkit-slider-thumb {
@@ -683,6 +690,24 @@ a {
     width: 33px;
 }
 
+.edit_input {
+    height: 26px;
+    width: 100%;
+    max-width: 288px;
+    border: none;
+    border-bottom: 2px solid #282423;
+    font-family: "Muller", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+    color: #282423;
+    -moz-appearance: textfield;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    outline: none;
+}
+
 
 .results {
     margin-left: 128px;
@@ -740,7 +765,13 @@ a {
     flex-direction: column;
 }
 
-.pie-chart__description .text_bold {
+.risk__percents {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+}
+
+.pie-chart__description .text_bold, .risk__percents .text_bold {
     color: #8C6A52;
     line-height: 32px;
     font-weight: 700;
@@ -758,6 +789,67 @@ a {
     margin-top: 0;
     margin-left: 36px;
     flex-shrink: 0;
+}
+
+.description__row {
+    display: flex;
+    align-items: center;
+}
+
+.help__icon, .tooltip__icon {
+    width: 16px;
+    height: 16px;
+    background: url("img/help-icon.svg") 0 0 / contain no-repeat;
+    position: relative;
+    margin-left: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.tooltip__icon {
+    background: url("img/tooltip-icon.svg") 0 0 / contain no-repeat;
+    margin: 20px 20px 24px 20px;
+}
+
+.cross__icon {
+    background: url("img/cross-icon.svg") 0 0 / contain no-repeat;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    bottom: 24px;
+    width: 250px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip p {
+    padding: 0 20px 20px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+}
+
+.tooltip_visible {
+    display: block;
+}
+
+.tooltip__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0);
+    transition: z-index 250ms ease-in-out, background-color 250ms ease-in-out 0s;
 }
 
 
@@ -797,6 +889,12 @@ a {
     letter-spacing: 0.02em;
 }
 
+
+@media only screen and (max-width: 1000px) {
+    .tooltip {
+        left: -190px;
+    }
+}
 
 @media only screen and (max-width: 768px) {
     .main-title {
@@ -881,6 +979,40 @@ a {
         height: 207px;
     }
 
+    .tooltip {
+        display: block;
+        position: fixed;
+        height: 0;
+        padding: 0;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 15px 15px 0 0;
+        overflow: hidden;
+        z-index: 50;
+        transition: height 250ms ease-in-out 0s;
+    }
+
+    .tooltip p {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .tooltip_visible {
+        height: 74%;
+    }
+
+    .tooltip__overlay_visible {
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 40;
+    }
+
+    .cross__icon {
+        width: 16px;
+        height: 16px;
+    }
+
     .footer {
         padding: 84px 16px 45px;
     }
@@ -905,6 +1037,12 @@ a {
 
     .result {
         padding: 30px 15px;
+    }
+
+    .risk__percents {
+        grid-column-gap: unset;
+        grid-template-columns: unset;
+        grid-template-rows: auto auto;
     }
 
     .result__link {

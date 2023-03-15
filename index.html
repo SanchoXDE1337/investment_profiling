@@ -8,13 +8,13 @@
 
     <meta content="Анкета риск-профилирования – Росбанк L’Hermitage Private Banking" property="og:title">
     <meta content="https://api.private-banking.ru/doc/anketa-investora.png" property="og:image">
-    <meta content="Тест на риск-профиль от Росбанк L’Hermitage. Ответьте на 9 простых вопросов и получите набор активов, который подойдет именно вам."
+    <meta content="Тест на анкету инвестора от Росбанк L’Hermitage. Ответьте на 14 простых вопросов и получите набор активов, который подойдет именно вам."
           property="og:description">
     <meta content="https://sanchoxde1337.github.io/investment_profiling/" property="og:url">
     <meta content="website" property="og:type">
     <meta content="Росбанк" property="og:site_name">
     <meta content="ru_RU" property="og:locale">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta content="summary_large_image" name="twitter:card">
 
     <link href="img/RSB_ShortlogoCMYK.ico" rel="shortcut icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon" sizes="192x192">
@@ -25,6 +25,8 @@
 </head>
 <body>
 <div>
+    <div class="tooltip__overlay"></div>
+
     <div class="header">
         <div class="header__info">
             <a href="https://www.private-banking.ru/otdeleniya/" target="_blank">
@@ -66,9 +68,9 @@
             <button class="button_dropdown" id="btn_dropdown">
                 <span class="dropdown__span">РОСБАНК ОНЛАЙН<span class="dropdown__arrow"></span></span>
                 <div class="dropdown__menu">
-                    <a class="button_dropdown dropdown__link" href="https://online.rosbank.ru/ibank/home?0"><span
+                    <a class="button_dropdown dropdown__link" target="_blank" href="https://online.rosbank.ru/ibank/home?0"><span
                             class="dropdown__span">Интернет-банк</span></a>
-                    <a class="button_dropdown dropdown__link" href="https://axiom.private-banking.ru/"><span
+                    <a class="button_dropdown dropdown__link" target="_blank" href="https://axiom.private-banking.ru/"><span
                             class="dropdown__span">Advisors' Axiom</span></a>
                 </div>
             </button>
@@ -77,16 +79,16 @@
 
     <div class="content">
         <div class="content__header">
-            <h1 class="main-title">Инвестиционный профиль</h1>
-            <p class="sm_text">В инвестициях не существует универсальной формулы успеха. Чтобы построить рабочий
-                портфель, нужно определить инвестиционный профиль: вашу толерантность к риску и ожидание доходности</p>
+            <h1 class="main-title">Анкета инвестора</h1>
+            <p class="sm_text">Чтобы построить рабочий портфель, нужно определить вашу толерантность к риску и ожидание
+                доходности</p>
         </div>
 
         <div class="divider-bar"></div>
 
         <div class="steps__container">
             <div class="progress">
-                <p class="progress-counter">Вопрос <span id="progress-counter">1</span> из 9</p>
+                <p class="progress-counter">Вопрос <span id="progress-counter">1</span> из 14</p>
                 <div class="progress-bar">
                     <div class="bar"></div>
                 </div>
@@ -94,7 +96,7 @@
 
             <div class="content__step active_step start_step">
                 <p class="xl_text">Узнайте, какой вы инвестор</p>
-                <p class="sm_text">Ответьте на 9 простых вопросов и получите набор активов, который подойдет именно
+                <p class="sm_text">Ответьте на 14 простых вопросов и получите набор активов, который подойдет именно
                     вам</p>
                 <br/>
                 <p class="sm_text">Это бесплатная демо-версия. Чтобы сформировать индивидуальную инвестиционную
@@ -108,31 +110,31 @@
                     <p class="lg_text">Выберите главную цель ваших инвестиций</p>
                     <div class="radio-group">
                         <label class="radio-item">Защитить капитал от инфляции
-                            <input name="inv_target" type="radio" value="8.4">
+                            <input name="inv_target" type="radio" value="7.2">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Сформировать пенсионный капитал
-                            <input name="inv_target" type="radio" value="5.6">
+                            <input name="inv_target" type="radio" value="4.8">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Передать капитал наследникам
-                            <input name="inv_target" type="radio" value="8.4">
+                            <input name="inv_target" type="radio" value="7.2">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Получить максимум от рынка
-                            <input name="inv_target" type="radio" value="14">
+                            <input name="inv_target" type="radio" value="12">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Найти альтернативу депозиту
-                            <input name="inv_target" type="radio" value="5.6">
+                            <input name="inv_target" type="radio" value="4.8">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Создать источник дополнительного дохода
-                            <input name="inv_target" type="radio" value="11.2">
+                            <input name="inv_target" type="radio" value="9.6">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Сохранить капитал любой ценой
-                            <input name="inv_target" type="radio" value="2.8">
+                            <input name="inv_target" type="radio" value="2.4">
                             <span class="radio-mark"></span>
                         </label>
                     </div>
@@ -145,19 +147,19 @@
                         делать?</p>
                     <div class="radio-group">
                         <label class="radio-item">Выйду из инвестиций в депозиты, пока мой портфель не просел на все 50%
-                            <input name="descent" type="radio" value="4.8">
+                            <input name="descent" type="radio" value="4">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Распродажа! Куплю бумаги со скидкой
-                            <input name="descent" type="radio" value="12">
+                            <input name="descent" type="radio" value="10">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Ничего не буду делать. Падения на рынке — это нормально
-                            <input name="descent" type="radio" value="9.6">
+                            <input name="descent" type="radio" value="8">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Обращусь за консультацией к профессионалу
-                            <input name="descent" type="radio" value="7.2">
+                            <input name="descent" type="radio" value="6">
                             <span class="radio-mark"></span>
                         </label>
                     </div>
@@ -193,34 +195,34 @@
                             прибыль и нежелание принимать потери.»
                             <br/>
                             Макс Хайн
-                            <input name="agreement" type="radio" value="5.6">
+                            <input name="agreement" type="radio" value="4">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">«Падение фондового рынка — столь же обычное явление, как январская
                             метель в Колорадо. Если вы готовы к нему, оно не может причинить вам вреда.»
                             <br/>
                             Питер Линч
-                            <input name="agreement" type="radio" value="4.2">
+                            <input name="agreement" type="radio" value="3">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">«Сколько денег у тебя останется — гораздо важнее того, сколько ты
                             зарабатываешь.»
                             <br/>
                             Роберт Кийосаки
-                            <input name="agreement" type="radio" value="1.4">
+                            <input name="agreement" type="radio" value="1">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">«Консерватор редко становится героем истории.»
                             <br/>
                             Дж. Темплтон
-                            <input name="agreement" type="radio" value="7">
+                            <input name="agreement" type="radio" value="5">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">«Инвестирование должно напоминать наблюдение за тем, как сохнет краска
                             или как растет трава. Если вам нужен азарт, то возьмите 800 $ и поезжайте в Лас-Вегас.»
                             <br/>
                             Пол Самуельсон
-                            <input name="agreement" type="radio" value="2.8">
+                            <input name="agreement" type="radio" value="2">
                             <span class="radio-mark"></span>
                         </label>
                     </div>
@@ -233,29 +235,29 @@
                     <p class="text_hint">Можно выбрать несколько вариантов</p>
                     <div class="radio-group">
                         <label class="radio-item">Есть высшее экономическое образование
-                            <input name="experience" type="checkbox" value="3.5">
+                            <input name="experience" type="checkbox" value="2.4">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Получил аттестат специалиста финансового рынка
                             <br/>
                             (CFA, ФСФР, ФССА и т.д.)
-                            <input name="experience" type="checkbox" value="4.9">
+                            <input name="experience" type="checkbox" value="3.4">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Работал в финансовой сфере
-                            <input name="experience" type="checkbox" value="4.2">
+                            <input name="experience" type="checkbox" value="2.9">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Инвестировал в облигации или акции
-                            <input name="experience" type="checkbox" value="2.1">
-                            <span class="radio-mark"></span>
-                        </label>
-                        <label class="radio-item">Вкладывал деньги в инвестиционные фонды
                             <input name="experience" type="checkbox" value="1.4">
                             <span class="radio-mark"></span>
                         </label>
+                        <label class="radio-item">Вкладывал деньги в инвестиционные фонды
+                            <input name="experience" type="checkbox" value="1">
+                            <span class="radio-mark"></span>
+                        </label>
                         <label class="radio-item">Торговал фьючерсами и опционами
-                            <input name="experience" type="checkbox" value="2.8">
+                            <input name="experience" type="checkbox" value="1.9">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Не было опыта
@@ -347,27 +349,27 @@
                     <p class="lg_text">Какие ассоциации у вас вызывает слово «риск»?</p>
                     <div class="radio-group">
                         <label class="radio-item">Глупость
-                            <input name="risk" type="radio" value="4">
+                            <input name="risk" type="radio" value="2.8">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Возможность
-                            <input name="risk" type="radio" value="8">
+                            <input name="risk" type="radio" value="5.6">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Опасность
-                            <input name="risk" type="radio" value="2">
+                            <input name="risk" type="radio" value="1.4">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Повседневность
-                            <input name="risk" type="radio" value="6">
+                            <input name="risk" type="radio" value="4.2">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Азарт
-                            <input name="risk" type="radio" value="10">
+                            <input name="risk" type="radio" value="7">
                             <span class="radio-mark"></span>
                         </label>
                         <label class="radio-item">Восторг
-                            <input name="risk" type="radio" value="10">
+                            <input name="risk" type="radio" value="7">
                             <span class="radio-mark"></span>
                         </label>
                     </div>
@@ -388,7 +390,7 @@
                     </div>
                     <p class="avg-loss slider__label">Потери от 5% до 15%</p>
                 </div>
-                <div class="content__prompt">
+                <div class="content__prompt content__prompt_visible">
                     <p class="lg_text">Чем выше доходность, тем выше риск</p>
                     <p class="md_text">Ваш портфель хороший, если за единицу риска вы получаете единицу доходности</p>
                 </div>
@@ -398,54 +400,65 @@
                 <div class="content__page">
                     <p class="lg_text">Какую историю успеха вы хотели бы повторить</p>
                     <div class="radio-group">
-                        <label class="radio-item">Безработный Такаси Котегава заработал 20 млн $ на ошибке
+                        <label class="radio-item">Безработный Такаси Котегава заработал 20&nbsp;млн&nbsp;$ на&nbsp;ошибке
                             инвестиционного банка Mizuho Securities
                             <input name="success" type="radio" value="5">
                             <span class="radio-mark"></span>
                         </label>
-                        <label class="radio-item">Бизнес-ангел Дэвид Черитон первым поверил в Google и стал одним из
-                            богатейших людей мира
+                        <label class="radio-item">Бизнес-ангел Дэвид Черитон первым поверил в&nbsp;Google и&nbsp;стал
+                            одним из&nbsp;богатейших людей мира
                             <input name="success" type="radio" value="4">
                             <span class="radio-mark"></span>
                         </label>
-                        <label class="radio-item">Свою первую инвестицию Уоррен Баффет сделал в 11 лет, когда купил 3
-                            акции Cities Service Preferred за 38,25 $ за штуку. Долгосрочный подход привел его к
-                            состоянию в 95,9 млрд $
+                        <label class="radio-item">Свою первую инвестицию Уоррен Баффет сделал в&nbsp;11 лет, когда купил
+                            3
+                            акции Cities Service Preferred за&nbsp;38,25&nbsp;$ за&nbsp;штуку. Долгосрочный подход
+                            привел его к&nbsp;состоянию в&nbsp;95,9&nbsp;млрд&nbsp;$
                             <input name="success" type="radio" value="2">
                             <span class="radio-mark"></span>
                         </label>
-                        <label class="radio-item">Элис Уолтон родилась в семье основателей сети магазинов Walmart.
-                            Наследнице не нужно было зарабатывать состояние, однако она смогла его приумножить, в том
-                            числе с помощью инвестиций в искусство
+                        <label class="radio-item">Элис Уолтон родилась в&nbsp;семье основателей сети магазинов Walmart.
+                            Наследнице не&nbsp;нужно было зарабатывать состояние, однако она смогла его приумножить, в&nbsp;том
+                            числе с&nbsp;помощью инвестиций в&nbsp;искусство
                             <input name="success" type="radio" value="3">
                             <span class="radio-mark"></span>
                         </label>
-                        <label class="radio-item">Благодаря своему трудоголизму Тим Кук построил карьеру от сотрудника
-                            исследовательской лаборатории IBM до генерального директора самой «дорогой» в мире компании
+                        <label class="radio-item">Благодаря своему трудоголизму Тим Кук построил карьеру от&nbsp;сотрудника
+                            исследовательской лаборатории IBM до&nbsp;генерального директора самой «дорогой» в&nbsp;мире
+                            компании
                             <input name="success" type="radio" value="1">
                             <span class="radio-mark"></span>
                         </label>
+                    </div>
+                    <div class="content__prompt" id="prompt_8">
+                        <p class="lg_text">Для вашей истории успеха</p>
+                        <p class="md_text">Читайте аналитику и обзоры рынка от экспертов Росбанка на нашем канале в
+                            Дзене</p>
+                        <a class="link__button"
+                           href="https://dzen.ru/rosbankinvest"
+                           target="_blank">
+                            <p>Перейти в Дзен</p>
+                            <div class="arrow__container">
+                                <svg class="button__right-arrow" fill="#8C6A52" height="24" viewbox="0 0 20 24"
+                                     width="20"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.429 11.39l7.55-7.526V24h2.041V3.864l7.551 7.526L20 9.966 10 0 0 9.966l1.429 1.424z"
+                                          fill="#8C6A52"></path>
+                                </svg>
+                                <span class="arrow__line"></span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="content__step">
                 <div class="content__page">
-                    <p class="lg_text">И еще немного о вас</p>
-                    <p class="slider__label">На какой срок Вы готовы инвестировать?</p>
-                    <p class="slider__value" id="year_value">10 лет</p>
-                    <div class="slider__container slider__container_margin">
-                        <input class="slider" id="years" max="9" min="0" step="1" type="range" value="3">
-                        <div class="slider__ranges">
-                            <span>0</span>
-                            <span>40</span>
-                        </div>
-                    </div>
-                    <p class="slider__label">Ваша ежемесячная сумма инвестирования</p>
+                    <p class="lg_text mb_20">Ваша ежемесячная сумма инвестирования</p>
                     <p class="slider__value" id="invest_amount_value">100 тыс. ₽</p>
                     <div class="slider__container slider__container_margin">
-                        <input class="slider" id="invest_amount" max="9" min="0" step="1" type="range"
-                               value="1">
+                        <input class="slider" id="invest_amount" max="10" min="0" step="1" type="range"
+                               value="2">
                         <div class="slider__ranges">
                             <span>0</span>
                             <span>> 25 МЛН</span>
@@ -453,6 +466,68 @@
                     </div>
                 </div>
             </div>
+
+            <div class="content__step">
+                <div class="content__page">
+                    <p class="lg_text mb_20">Ваш стартовый капитал для инвестиций</p>
+                    <p class="slider__value" id="start_up_capital_value">от 50 до 300 тыс. ₽</p>
+                    <div class="slider__container slider__container_margin">
+                        <input class="slider" id="start_up_capital" max="4" min="0" step="1" type="range"
+                               value="1">
+                        <div class="slider__ranges">
+                            <span>0</span>
+                            <span>> 10 МЛН</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content__step">
+                <div class="content__page">
+                    <p class="lg_text">Сколько вы тратите в месяц?</p>
+                    <p class="text_hint">Укажите среднюю сумму в рублях за последний год</p>
+                    <input class="edit_input" id="avg_spend" maxlength="17" placeholder="Например, 100 000" type="text">
+                </div>
+            </div>
+
+            <div class="content__step">
+                <div class="content__page">
+                    <p class="lg_text">Каков ваш ежемесячный доход?</p>
+                    <p class="text_hint">Укажите среднюю сумму в рублях за последний год</p>
+                    <input class="edit_input" id="avg_income" maxlength="17" placeholder="Например, 200 000"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="content__step">
+                <div class="content__page">
+                    <p class="lg_text">Каков размер ваших имущественных обязательств в течение срока инвестирования?</p>
+                    <p class="text_hint">Укажите примерную сумму в рублях</p>
+                    <input class="edit_input" id="avg_obligation" maxlength="17" placeholder="Например, 1 000 000"
+                           type="text">
+                </div>
+            </div>
+
+            <div class="content__step">
+                <div class="content__page">
+                    <p class="lg_text">И ещё немного о вас</p>
+
+                    <p class="slider__label">На какой срок Вы готовы инвестировать?</p>
+                    <p class="slider__value" id="year_value">3 года</p>
+                    <div class="slider__container slider__container_margin">
+                        <input class="slider" id="years" max="5" min="0" step="1" type="range" value="2">
+                        <div class="slider__ranges">
+                            <span>1</span>
+                            <span>10</span>
+                        </div>
+                    </div>
+
+                    <p class="input__label">Сколько вам лет?</p>
+                    <input class="edit_input" id="age" maxlength="2" placeholder="Например, 54"
+                           type="text">
+                </div>
+            </div>
+
 
             <div class="button-container">
                 <button class="button back__button button_transparent back__button_visible" id="btn_back">Назад</button>
@@ -465,15 +540,31 @@
         <div class="results">
             <p class="lg_text">Результат</p>
             <div class="result" id="result_1">
-                <p class="xl_text">Ваш профиль — неивестиционный</p>
+                <p class="xl_text">Ваш результат — неивестиционный</p>
                 <p class="sm_text result__description">Для вас сохранить капитал важнее, чем заработать. Любые риски
                     неприемлемы. Поэтому единственный
                     инструмент, который вам сейчас подходит — это банковский вклад</p>
                 <p class="md_text">Состав портфеля</p>
+                <div class="risk__percents">
+                    <p class="sm_text"><span class="text_bold">>7%</span> ожидаемая годовая доходность</p>
+                    <p class="sm_text"><span class="text_bold">0%</span> допустимый риск</p>
+                </div>
                 <div class="pie-chart__container">
                     <img class="pie-chart" draggable="false" src="img/pie_chart_1.png"/>
                     <div class="pie-chart__description">
-                        <p class="sm_text"><span class="text_bold">100%</span>денежный рынок</p>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">100%</span>денежный рынок</p>
+                            <div class="help__icon">
+
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>
+                                        Денежный рынок – на случай, если вам срочно понадобятся деньги
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="result__link">
@@ -494,16 +585,38 @@
             </div>
 
             <div class="result" id="result_2">
-                <p class="xl_text">Ваш профиль — консервативный</p>
+                <p class="xl_text">Ваш результат — консервативный</p>
                 <p class="sm_text result__description">Главное для вас — сохранение капитала. Но вы готовы изучить
                     возможности фондового рынка, чтобы получить доходность выше ставки депозита. Помимо банковских
                     вкладов, вам будет комфортно инвестировать в краткосрочные облигации</p>
                 <p class="md_text">Состав портфеля</p>
+                <div class="risk__percents">
+                    <p class="sm_text"><span class="text_bold">>8%</span> ожидаемая годовая доходность</p>
+                    <p class="sm_text"><span class="text_bold">0-5%</span> допустимый риск</p>
+                </div>
                 <div class="pie-chart__container">
                     <img class="pie-chart" draggable="false" src="img/pie_chart_2.png"/>
                     <div class="pie-chart__description">
-                        <p class="sm_text"><span class="text_bold">67%</span>денежный рынок</p>
-                        <p class="sm_text"><span class="text_bold">33%</span>облигации</p>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">67%</span>денежный рынок</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Денежный рынок – на случай, если вам срочно понадобятся деньги</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">33%</span>облигации</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Облигации для стабильности и регулярных выплат купонного дохода</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="result__link">
@@ -524,18 +637,58 @@
             </div>
 
             <div class="result" id="result_3">
-                <p class="xl_text">Ваш профиль — защитный</p>
+                <p class="xl_text">Ваш результат — защитный</p>
                 <p class="sm_text result__description">Ваш абсолютный приоритет — сохранение капитала и быстрый доступ к
                     вложениям. Однако вы готовы пойти на незначительный риск, чтобы ваш капитал не обесценился из-за
                     инфляции. Основную часть вашего портфеля могут составлять депозиты и облигации</p>
                 <p class="md_text">Состав портфеля</p>
+                <div class="risk__percents">
+                    <p class="sm_text"><span class="text_bold">>9%</span> ожидаемая годовая доходность</p>
+                    <p class="sm_text"><span class="text_bold">5-15%</span> допустимый риск</p>
+                </div>
                 <div class="pie-chart__container">
                     <img class="pie-chart" draggable="false" src="img/pie_chart_3.png"/>
                     <div class="pie-chart__description">
-                        <p class="sm_text"><span class="text_bold">40%</span>денежный рынок</p>
-                        <p class="sm_text"><span class="text_bold">40%</span>облигации</p>
-                        <p class="sm_text"><span class="text_bold">15%</span>акции</p>
-                        <p class="sm_text"><span class="text_bold">5%</span>альтернативные активы</p>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">40%</span>денежный рынок</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Денежный рынок – на случай, если вам срочно понадобятся деньги</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">40%</span>облигации</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Облигации для стабильности и регулярных выплат купонного дохода</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">15%</span>акции</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Акции позволят получать от рынка большую доходность</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">5%</span>альтернативные активы</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Альтернативные активы позволят вашему портфелю оставаться устойчивым в кризис</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="result__link">
@@ -556,18 +709,58 @@
             </div>
 
             <div class="result" id="result_4">
-                <p class="xl_text">Ваш профиль — сбалансированный</p>
+                <p class="xl_text">Ваш результат — сбалансированный</p>
                 <p class="sm_text result__description">Ради достижения своей финансовой цели вы готовы инвестировать
                     большую часть портфеля в рисковые активы на долгосрочный период. Мысль о том, что стоимость вашего
                     портфеля может колебаться, не вызывает у вас тревогу</p>
                 <p class="md_text">Состав портфеля</p>
+                <div class="risk__percents">
+                    <p class="sm_text"><span class="text_bold">>12%</span> ожидаемая годовая доходность</p>
+                    <p class="sm_text"><span class="text_bold">15-30%</span> допустимый риск</p>
+                </div>
                 <div class="pie-chart__container">
                     <img class="pie-chart" draggable="false" src="img/pie_chart_4.png"/>
                     <div class="pie-chart__description">
-                        <p class="sm_text"><span class="text_bold">45%</span>акции</p>
-                        <p class="sm_text"><span class="text_bold">35%</span>облигации</p>
-                        <p class="sm_text"><span class="text_bold">10%</span>денежный рынок</p>
-                        <p class="sm_text"><span class="text_bold">10%</span>альтернативные активы</p>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">45%</span>акции</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Акции позволят получать от рынка большую доходность</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">35%</span>облигации</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Облигации для стабильности и регулярных выплат купонного дохода</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">10%</span>денежный рынок</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Денежный рынок – на случай, если вам срочно понадобятся деньги</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">10%</span>альтернативные активы</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Альтернативные активы позволят вашему портфелю оставаться устойчивым в кризис</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="result__link">
@@ -588,18 +781,58 @@
             </div>
 
             <div class="result" id="result_5">
-                <p class="xl_text">Ваш профиль — динамичный</p>
+                <p class="xl_text">Ваш результат — динамичный</p>
                 <p class="sm_text result__description">Вы хотите получить от рынка максимум и готовы инвестировать
                     основную часть портфеля в рисковые активы. Вы спокойно относитесь к сильным колебаниям портфеля и
                     при этом осознаете все финансовые риски</p>
                 <p class="md_text">Состав портфеля</p>
+                <div class="risk__percents">
+                    <p class="sm_text"><span class="text_bold">>15%</span> ожидаемая годовая доходность</p>
+                    <p class="sm_text"><span class="text_bold">>30%</span> допустимый риск</p>
+                </div>
                 <div class="pie-chart__container">
                     <img class="pie-chart" draggable="false" src="img/pie_chart_5.png"/>
                     <div class="pie-chart__description">
-                        <p class="sm_text"><span class="text_bold">85%</span>акции</p>
-                        <p class="sm_text"><span class="text_bold">5%</span>денежный рынок</p>
-                        <p class="sm_text"><span class="text_bold">5%</span>облигации</p>
-                        <p class="sm_text"><span class="text_bold">5%</span>альтернативные активы</p>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">85%</span>акции</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Акции позволят получать от рынка большую доходность</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">5%</span>денежный рынок</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Денежный рынок – на случай, если вам срочно понадобятся деньги</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">5%</span>облигации</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Облигации для стабильности и регулярных выплат купонного дохода</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description__row">
+                            <p class="sm_text"><span class="text_bold">5%</span>альтернативные активы</p>
+                            <div class="help__icon">
+                                <div class="tooltip">
+                                    <div class="tooltip__icon"></div>
+                                    <div class="cross__icon"></div>
+                                    <p>Альтернативные активы позволят вашему портфелю оставаться устойчивым в кризис</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="result__link">
